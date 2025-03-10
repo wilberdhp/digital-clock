@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Digital Clock</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="display">
+            <div id="time"></div>
+        </div>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="settings">
+        
+        <i class="bi bi-gear open-settings"></i>
+        <div class="settings-container">
+            <div class="container-color">
+                <label for="color-1">Color 1</label>
+                <input class="select-color" type="color" name="color-1" id="color-1" value="#00ffff">
+            </div>
+            <div class="container-color">
+                <label for="color-2">Color 2</label>
+                <input class="select-color" type="color" name="color-2" id="color-2" value="#ffe100">
+            </div>
+            <div class="container-color">
+                <label for="color-3">Color 3</label>
+                <input class="select-color" type="color" name="color-3" id="color-3" value="#ff00ff">
+            </div>
+            <div class="container-color dark-light">
+                <label for="dark-light-checkbox" class="toggle-container">
+                    <input class="dark-light-check" type="checkbox" name="dark-light" id="dark-light-checkbox">
+                    <span class="toggle-ball">
+                        <i class="bi bi-brightness-high-fill sun"></i>
+                        <i class="bi bi-moon-stars-fill dark"></i>
+                    </span>
+                    
+                </label>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

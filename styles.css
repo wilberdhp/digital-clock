@@ -1,0 +1,231 @@
+
+:root {
+  --background-color: #000;
+  --setting-color: white;
+  --toggle-mode-color: white;
+}
+
+[data-theme="light"] {
+  --background-color: #fff;
+  --setting-color: #000;
+  --toggle-mode-color: #3853ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: var(--background-color);
+  z-index: -1;
+}
+
+.wrapper {
+  height: 150px;
+  width: 520px;
+  position: relative;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00ffff, #ffe100, #ff00ff);
+  animation: animation 1.5s linear infinite;
+  -webkit-animation: animation 1.5s linear infinite;
+}
+
+.wrapper .display, .wrapper span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper .display {
+  z-index: 999;
+  background-color: var(--background-color);
+  width: calc(100% - 15px);
+  height: calc(100% - 15px);
+  text-align: center;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display #time {
+  font-size: 80px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #00ffff, #ffe100, #ff00ff);
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: animation 1.5s linear infinite;
+  -webkit-animation: animation 1.5s linear infinite;
+}
+
+@keyframes animation {
+  100% {
+    filter: hue-rotate(360deg)  ;
+    -webkit-filter: hue-rotate(360deg)  ;
+  }
+}
+
+.wrapper span {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+  border-radius: 10px;
+}
+
+.wrapper span:first-child {
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
+
+.wrapper span:last-child {
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+}
+
+@media (width < 520px) {
+  .wrapper {
+    height: 90px;
+    width: 350px;
+  }  
+
+  .display #time {
+    font-size: 50px;
+  } 
+}
+
+@media (width <= 360px) {
+  .wrapper {
+    height: 80px;
+    width: 300px;
+  } 
+  .display #time {
+    font-size: 40px;
+  } 
+}
+
+.settings {
+  position: absolute;
+  top: 10px;
+  right: 10px; 
+} 
+
+.settings i.open-settings {
+  font-size: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: -1;
+  color: var(--setting-color);
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.settings i.open-settings:hover {
+  opacity: 1;
+}
+
+
+.settings-container {
+  z-index: 999;
+  display: none;
+  width: 150px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--background-color);
+  color: var(--setting-color);
+  font-weight: 600;
+}
+
+.settings-container.open {
+  display: block;
+}
+
+.settings-container .container-color {
+  margin: 12px 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.container-color label,
+.container-color input {
+  cursor: pointer;
+}
+
+.container-color input {
+  border: none;
+  border-radius: 5px;
+
+}
+
+
+.toggle-container {
+  position: relative;
+  width: 60px;
+  height: 25px;
+  border-radius: 100vmax;
+  border: 1.5px solid var(--toggle-mode-color);
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-ball {
+  height: 25px;
+  width: 25px;
+  border-radius: 100vmax;
+  position: absolute;
+  background-color: var(--toggle-mode-color);
+  transition: transform 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+input[type="checkbox"]:checked + .toggle-ball {
+  transform: translateX(34px);
+  
+  > .dark {
+    display: none;
+  }
+
+  > .sun {
+    display: block;
+  } 
+}
+
+.dark, .sun {
+  position: absolute;
+  font-size: 100%;
+} 
+
+.sun {
+  color: #fff;
+  display: none;
+}
+
+
+.dark {
+  display: block;
+  color: #3853ff;
+}
